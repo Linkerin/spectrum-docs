@@ -1,0 +1,58 @@
+---
+title: hexToRgb()
+description: Convert a hexadecimal color value to its corresponding RGB value using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/hexToRgb.ts)
+
+The `hexToRgb` function allows you to convert a hexadecimal color value to its corresponding RGB value.
+
+## Usage
+
+```js
+import { hexToRgb } from '@snipshot/spectrum';
+
+const rgbObj = hexToRgb('#ff0000');
+
+console.log(rgbObj); // { r: 255, g: 0, b: 0, a: 1 }
+```
+
+## Parameters
+
+`hexToRgb(colorValue)`
+
+| Parameter    | Type     | Required | Description                                                                              |
+| :----------- | :------- | :------- | :--------------------------------------------------------------------------------------- |
+| `colorValue` | `string` | true     | `HEX` code of the color with optional `#`. Accepts shorthand notation and alpha channel. |
+
+## Return Value
+
+The `hexToRgb` function returns an [RGB object](/docs/types#rgbobj) of the color value.
+
+## Examples
+
+### Shorthand notation
+
+```js
+import { hexToRgb } from '@snipshot/spectrum';
+
+const lightBlueRgb = hexToRgb('#3ae');
+console.log(lightBlueRgb); // { r: 51, g: 170, b: 238, a: 1 }
+
+const green = hexToRgb('1e3');
+console.log(green); // { r: 17, g: 238, b: 51, a: 1 }
+```
+
+### Colors with opacity
+
+```js
+import { hexToRgb } from '@snipshot/spectrum';
+
+const lily = hexToRgb('#7777eeb3');
+console.log(lily); // { r: 119, g: 119, b: 238, a: 0.7 }
+
+const darkOrange = hexToRgb('#941a');
+console.log(darkOrange); // { r: 153, g: 68, b: 17, a: 0.67 }
+```

@@ -1,0 +1,72 @@
+---
+title: colorMix()
+description: Mix two colors using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/colorMix.ts)
+
+The `colorMix` function allows you to mix two colors according to a specified weight in RGB color space.
+This function returns a new `Spectrum` instance representing the resulting color.
+
+## Usage
+
+```js
+import Spectrum, { colorMix } from '@snipshot/spectrum';
+
+const red = new Spectrum('hex', '#f00');
+const blue = new Spectrum('rgb', '0, 0, 255, 1');
+
+const purple = colorMix(red, blue, 0.5); // 0.5 is a weight of the first color (max value is 1)
+
+console.log(purple.rgb); // { r: 128, g: 0, b: 128, a: 1 }
+```
+
+## Parameters
+
+`colorMix(color1, color2, weight)`
+
+| Parameter | Type                                        | Required | Valid range | Description                                       |
+| :-------- | :------------------------------------------ | :------- | :---------- | :------------------------------------------------ |
+| `color1`  | [`Spectrum`](/docs/spectrum-class) instance | true     | -           | The first color to mix                            |
+| `color2`  | [`Spectrum`](/docs/spectrum-class) instance | true     | -           | The second color to mix                           |
+| `weight`  | `number`                                    | true     | `[0; 1]`    | The weight of the **first color** in the mixture. |
+
+:::note
+The `weight` parameter determines the influence of the first color (`color1`) on the resulting mixed color.
+The closer the `weight` value is to 1, the more dominant `color1` will be in the mixture.
+Thus, when the `weight` is set to 0.5, both colors, `color1` and `color2`, are given equal importance in the blend.
+:::
+
+## Return Value
+
+The `colorMix` function returns a new [`Spectrum`](/docs/spectrum-class) instance representing the mixed color.
+
+## Examples
+
+### Mix two `hex` colors
+
+```js
+import Spectrum, { colorMix } from '@snipshot/spectrum';
+
+const darkSlateGrey = new Spectrum('hex', '#2F4F4F');
+const orange = new Spectrum('hex', '#FFA500');
+
+const mix = colorMix(darkSlateGrey, orange, 0.3); // 30% of Dark slate grey and 70% of Orange;
+
+console.log(mix.hsl); // { h: 41, s: 0.77, l: 0.43, a: 1 }
+```
+
+### Mix colors with opacity
+
+```js
+import Spectrum, { colorMix } from '@snipshot/spectrum';
+
+const fuchsia = new Spectrum('rgb', '255 0 255 0.3');
+const midnightBlue = new Spectrum('rgb', '25 25 112 0.65');
+
+const mix = colorMix(fuchsia, midnightBlue, 0.5); // 50% of Fuchsia and 50% of Midnight blue;
+
+console.log(mix.rgb); // { r: 140, g: 13, b: 184, a: 0.47 }
+```

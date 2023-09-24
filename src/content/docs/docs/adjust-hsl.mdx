@@ -1,0 +1,73 @@
+---
+title: adjustHsl()
+description: Adjusts HSL values of a color object using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/adjustHsl.ts)
+
+The `adjustHsl` function allows you to adjust the HSL (Hue, Saturation, Lightness) values of a color object.
+This function returns a new `Spectrum` instance with the updated HSL values.
+
+## Usage
+
+```js
+import Spectrum, { adjustHsl } from '@snipshot/spectrum';
+
+const color = new Spectrum('hsl', [200, 0.5, 0.6, 1]);
+
+const adjustedColor = adjustHsl(color, {
+  hue: -20, // Adjust hue by -20 degrees
+  saturation: 0.1, // Increase saturation by 10%
+  lightness: -0.05 // Decrease lightness by 5%
+});
+
+console.log(adjustedColor.hsl); // { h: 180, s: 0.6, l: 0.55, a: 1 }
+console.log(color.hex === adjustedColor.hex); // false
+```
+
+## Parameters
+
+`adjustHsl(colorObj, options)`
+
+| Parameter            | Type                                        | Required | Valid range         | Description                                                                                    |
+| :------------------- | :------------------------------------------ | :------- | :------------------ | :--------------------------------------------------------------------------------------------- |
+| `colorObj`           | [`Spectrum`](/docs/spectrum-class) instance | true     | -                   | The Spectrum instance representing the color you want to adjust                                |
+| `options.hue`        | `number`                                    | false    | `[-360; 360]`       | The amount by which to adjust the hue value                                                    |
+| `options.saturation` | `string`                                    | false    | `['-100%'; '100%']` | The amount by which to adjust the saturation value. Should be provided as a percentage string. |
+| `options.lightness`  | `string`                                    | false    | `['-100%'; '100%']` | The amount by which to adjust the lightness value. Should be provided as a percentage string.  |
+| `options.alpha`      | `number`                                    | false    | `[-1; 1]`           | The amount by which to adjust the alpha value                                                  |
+
+## Return Value
+
+The `adjustHsl` function returns a new [`Spectrum`](/docs/spectrum-class) instance with the adjusted HSL values.
+
+## Examples
+
+### Adjust all properties
+
+```js
+import Spectrum, { adjustHsl } from '@snipshot/spectrum';
+
+const color = new Spectrum('hsl', [200, 0.5, 0.6, 1]);
+const adjustedColor = adjustHsl(color, {
+  hue: -45,
+  saturation: 0.3,
+  lightness: -0.14,
+  alpha: -0.32
+});
+
+console.log(adjustedColor.hsl); // { h: 155, s: 0.2, l: 0.46, a: 0.68 }
+```
+
+### Adjust Hue
+
+```js
+import Spectrum, { adjustHsl } from '@snipshot/spectrum';
+
+const color = new Spectrum('hsl', [200, 0.5, 0.6, 1]);
+const adjustedColor = adjustHsl(color, { hue: -20 });
+
+console.log(adjustedColor.hsl); // { h: 180, s: 0.5, l: 0.6, a: 1 }
+```

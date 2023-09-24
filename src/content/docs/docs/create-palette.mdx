@@ -1,0 +1,41 @@
+---
+title: createPalette()
+description: Generate a color palette using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/createPalette.ts)
+
+The `createPalette` function allows you to generate a palette of colors based on a given `Spectrum` instance.
+Each key in the palette object represents a lightness value from 0 to 100, and the corresponding value is a `Spectrum` object.
+
+## Usage
+
+```js
+import Spectrum, { createPalette } from '@snipshot/spectrum';
+
+const cyan = new Spectrum('hex', '#0ff');
+console.log(cyan.hsl); // { h: 180, s: 1, l: 0.5, a: 1 }
+
+const palette = createPalette(cyan);
+
+console.log(palette[0].hsl); // { h: 180, s: 1, l: 0, a: 1 } - black
+console.log(palette[44].hsl); // { h: 180, s: 1, l: 0.44, a: 1 }
+console.log(palette[70].hsl); // { h: 180, s: 1, l: 0.7, a: 1 }
+console.log(palette[100].hsl); // { h: 180, s: 1, l: 1, a: 1 } - white
+```
+
+## Parameters
+
+`createPalette(colorObj)`
+
+| Parameter  | Type                                        | Required | Description                                      |
+| :--------- | :------------------------------------------ | :------- | :----------------------------------------------- |
+| `colorObj` | [`Spectrum`](/docs/spectrum-class) instance | true     | The color from which will be generated a palette |
+
+## Return Value
+
+The `colorMix` function returns a palette object with lightness values from 0 to 100 as keys,
+where each key corresponds to a [`Spectrum`](/docs/spectrum-class) instance representing a color with the specified lightness.
+The keys step is equal to 1, thus, there are 101 values inside the palette object.

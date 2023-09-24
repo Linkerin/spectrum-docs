@@ -1,0 +1,48 @@
+/* :root[data-theme='light'],
+[data-theme='light'] ::backdrop {
+  --sl-color-black: hsl(35, 80%, 99%);
+
+  --sl-color-accent-high: hsl(25, 80%, 30%);
+  --sl-color-accent: hsl(25, 80%, 60%);
+  --sl-color-accent-low: hsl(25, 80%, 90%);
+
+  --sl-color-bg: hsl(35, 80%, 97%);
+  --sl-color-bg-nav: hsl(35, 80%, 92%);
+} */
+
+/* Dark mode colors. */
+:root {
+  --sl-font: 'Alata', sans-serif;
+
+  --github-icon-color: hsl(218 17% 35%);
+
+  /* --sl-color-accent-low: #46090e;
+  --sl-color-accent: #c6002c;
+  --sl-color-accent-high: #feb2ae;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #eeeeee;
+  --sl-color-gray-2: #c2c2c2;
+  --sl-color-gray-3: #8b8b8b;
+  --sl-color-gray-4: #585858;
+  --sl-color-gray-5: #383838;
+  --sl-color-gray-6: #272727;
+  --sl-color-black: #181818; */
+}
+/* Light mode colors. */
+/* :root[data-theme='light'] {
+  --sl-color-accent-low: #ffc7c4;
+  --sl-color-accent: #ca002c;
+  --sl-color-accent-high: #640011;
+  --sl-color-white: #181818;
+  --sl-color-gray-1: #272727;
+  --sl-color-gray-2: #383838;
+  --sl-color-gray-3: #585858;
+  --sl-color-gray-4: #8b8b8b;
+  --sl-color-gray-5: #c2c2c2;
+  --sl-color-gray-6: #eeeeee;
+  --sl-color-gray-7: #f6f6f6;
+  --sl-color-black: #ffffff;
+
+  --sl-color-bg: hsl(35, 80%, 99%);
+  --sl-color-bg-nav: hsl(35, 80%, 94%);
+} */

@@ -1,0 +1,44 @@
+---
+title: rgbObjToHsl()
+description: Convert an RGB object to HSL values using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/rgbObjToHsl.ts)
+
+The `rgbObjToHsl` function allows you to convert an RGB object to its corresponding HSLA (Hue, Saturation, Lightness, Alpha) values.
+
+## Usage
+
+```js
+import { rgbObjToHsl } from '@snipshot/spectrum';
+
+const hsl = rgbObjToHsl({ r: 255, g: 255, b: 0, a: 1 });
+
+console.log(hsl); // { h: 60, s: 1, l: 0.5, a: 1}
+```
+
+## Parameters
+
+`rgbObjToHsl(rgbObj)`
+
+| Parameter | Type                           | Required | Description                                                                              |
+| :-------- | :----------------------------- | :------- | :--------------------------------------------------------------------------------------- |
+| `rgbObj`  | [`RgbObj`](/docs/types#rgbobj) | true     | An RGB object that represents a color in the RGBA (Red, Green, Blue, Alpha) color space. |
+
+## Return Value
+
+The `rgbObjToHsl` function returns an [HSL object](/docs/types#hslobj) of the color value
+
+## Examples
+
+### A color with opacity
+
+```js
+import { rgbObjToHsl } from '@snipshot/spectrum';
+
+const hsl = rgbObjToHsl({ r: 138, g: 217, b: 16, a: 0.36 });
+
+console.log(hsl); // { h: 84, s: 0.86, l: 0.46, a: 0.36 }
+```

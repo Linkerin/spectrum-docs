@@ -1,0 +1,74 @@
+---
+title: invert()
+description: Get a negative color using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/invert.ts)
+
+The `invert` function allows you to get a [negative color](<https://en.wikipedia.org/wiki/Negative_(photography)#:~:text=Negative%20color,appearing%20yellow%2C%20and%20vice%20versa>).
+This function returns a new `Spectrum` instance representing the inverted color.
+
+## Usage
+
+```js
+import Spectrum, { invert } from '@snipshot/spectrum';
+
+const yellow = new Spectrum('rgb', [255, 255, 0]);
+const negativeColor = invert(yellow, 1); // 1 is a weight of the inverted color
+
+console.log(negativeColor.rgb); // { r: 0, g: 0, b: 255, a: 1 } - blue
+```
+
+## Parameters
+
+`invert(color1Obj, weight)`
+
+| Parameter  | Type                                        | Required | Valid range | Description                                        |
+| :--------- | :------------------------------------------ | :------- | :---------- | :------------------------------------------------- |
+| `colorObj` | [`Spectrum`](/docs/spectrum-class) instance | true     | -           | The initial color                                  |
+| `weight`   | `number`                                    | true     | `[0; 1]`    | The weight of the **inverted color** in the result |
+
+:::note
+Similar to the behaviour in the [`colorMix`](/docs/color-mix) function,
+the weight parameter controls the influence of the inverted color on the resulting color.
+The closer the `weight` value is to 1, the more dominant the inverted color will be.  
+Thus, when the `weight` is set to 0, the resulting color remains identical to the initial colorObj color.
+:::
+
+## Return Value
+
+The `invert` function returns a new [`Spectrum`](/docs/spectrum-class) instance representing the negative color.
+
+## Examples
+
+### Weight is 0.5
+
+When the `weight` value is equal to 0.5 (50% of initial color and 50% of inverted color),
+it will always produce grey color (`#808080`).
+
+```js
+import Spectrum, { invert } from '@snipshot/spectrum';
+
+const yellow = new Spectrum('rgb', [255, 255, 0]);
+const negativeYellow = invert(yellow, 0.5);
+
+console.log(negativeYellow.hex); // #808080
+
+const crimson = new Spectrum('hex', '#DC143C');
+const negativeCrimson = invert(crimson, 0.5);
+
+console.log(negativeCrimson.hex); // #808080
+```
+
+### Weight is 0
+
+```js
+import Spectrum, { invert } from '@snipshot/spectrum';
+
+const yellow = new Spectrum('rgb', [255, 255, 0]);
+const negativeColor = invert(yellow, 0);
+
+console.log(negativeColor.rgb); // { r: 255, g: 255, b: 0, a: 1 } - initial color
+```

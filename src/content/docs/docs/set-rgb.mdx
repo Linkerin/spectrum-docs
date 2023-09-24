@@ -1,0 +1,72 @@
+---
+title: setRgb()
+description: Modify RGB values of a color using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/setRgb.ts)
+
+The `setRgb` function allows you to modify the RGB (Red, Green, Blue) values of a color object.
+This function returns a new `Spectrum` instance with the updated RGB values.
+
+## Usage
+
+```js
+import Spectrum, { setRgb } from '@snipshot/spectrum';
+
+const color = new Spectrum('rgb', [255, 0, 0]);
+
+const updatedColor = setRgb(color, {
+  blue: 90, // Set blue channel equal to 90
+  alpha: 0.7 // Set opacity equal to 70%
+});
+
+console.log(updatedColor.rgb); // { r: 255, g: 0, b: 90, a: 0.7 }
+console.log(color.hex === updatedColor.hex); // false
+```
+
+## Parameters
+
+`setRgb(colorObj, options)`
+
+| Parameter       | Type                                        | Required | Valid range                  | Description                                                     |
+| :-------------- | :------------------------------------------ | :------- | :--------------------------- | :-------------------------------------------------------------- |
+| `colorObj`      | [`Spectrum`](/docs/spectrum-class) instance | true     | -                            | The Spectrum instance representing the color you want to modify |
+| `options.red`   | `number`                                    | false    | `[0; 255]`                   | The value that will be set as a red channel value               |
+| `options.green` | `number`                                    | false    | `[0; 255]`                   | The value that will be set as a green channel value             |
+| `options.blue`  | `number`                                    | false    | `[0; 255]`                   | The value that will be set as a blue channel value              |
+| `options.alpha` | `number`                                    | false    | `[0; 1]` or `['0%'; '100%']` | The value that will be set as an alpha value                    |
+
+## Return Value
+
+The `setRgb` function returns a new [`Spectrum`](/docs/spectrum-class) instance with the modified RGB values.
+
+## Examples
+
+### Modify all properties
+
+```js
+import Spectrum, { setRgb } from '@snipshot/spectrum';
+
+const color = new Spectrum('rgb', [125, 240, 10, 0.35]);
+const updatedColor = setRgb(color, {
+  red: 210,
+  green: 10,
+  blue: 160,
+  alpha: 1
+});
+
+console.log(updatedColor.rgb); // { r: 210, g: 10, b: 160, a: 1 }
+```
+
+### Modify opacity
+
+```js
+import Spectrum, { setRgb } from '@snipshot/spectrum';
+
+const color = new Spectrum('rgb', [240, 120, 128]);
+const updatedColor = setRgb(color, { alpha: 0.65 });
+
+console.log(updatedColor.rgb); // { r: 240, g: 120, b: 128, a: 0.65 }
+```

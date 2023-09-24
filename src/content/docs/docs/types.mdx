@@ -1,0 +1,56 @@
+---
+title: Types
+description: API reference for the Spectrum types
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+## HslObj
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L17)
+
+An HSL object that represents a color in the [HSLA](https://en.wikipedia.org/wiki/HSL_and_HSV) (Hue, Saturation, Lightness, Alpha) color space.
+
+| Key | Description                  | Type     | Valid range |
+| :-- | :--------------------------- | :------- | :---------- |
+| `h` | Hue (color tone)             | `number` | `[0; 360]`  |
+| `s` | Saturation (color intensity) | `number` | `[0; 1]`    |
+| `l` | Lightness (brightness)       | `number` | `[0; 1]`    |
+| `a` | Alpha channel (opacity)      | `number` | `[0; 1]`    |
+
+### Type Definition
+
+```ts
+type HslObj = {
+  h: number;
+  s: number;
+  l: number;
+  a: number;
+};
+```
+
+---
+
+## RgbObj
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L34)
+
+An RGB object that represents a color in the [RGBA](https://en.wikipedia.org/wiki/RGBA_color_model) (Red, Green, Blue, Alpha) color space.
+
+| Key | Description             | Type     | Valid range |
+| :-- | :---------------------- | :------- | :---------- |
+| `r` | Red                     | `number` | `[0; 255]`  |
+| `g` | Green                   | `number` | `[0; 255]`  |
+| `b` | Blue                    | `number` | `[0; 255]`  |
+| `a` | Alpha channel (opacity) | `number` | `[0; 1]`    |
+
+### Type Definition
+
+```ts
+type RgbObj = {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+};
+```

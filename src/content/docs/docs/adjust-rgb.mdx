@@ -1,0 +1,72 @@
+---
+title: adjustRgb()
+description: Adjusts RGB values of a color object using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/adjustRgb.ts)
+
+The `adjustHsl` function allows you to adjust the RGB (Red, Green, Blue) values of a color object.
+This function returns a new `Spectrum` instance with the updated RGB values.
+
+## Usage
+
+```js
+import Spectrum, { adjustRgb } from '@snipshot/spectrum';
+
+const color = new Spectrum('rgb', [255, 0, 0, 1]);
+
+const adjustedColor = adjustRgb(color, {
+  red: -50, // Adjust red by -50
+  alpha: -0.5 // Adjust alpha by -0.5
+});
+
+console.log(adjustedColor.rgb); // { r: 205, g: 0, b: 0, a: 0.5 }
+console.log(color.hex === adjustedColor.hex); // false
+```
+
+## Parameters
+
+`adjustRgb(colorObj, options)`
+
+| Parameter       | Type                                        | Required | Valid range   | Description                                                     |
+| :-------------- | :------------------------------------------ | :------- | :------------ | :-------------------------------------------------------------- |
+| `colorObj`      | [`Spectrum`](/docs/spectrum-class) instance | true     | -             | The Spectrum instance representing the color you want to adjust |
+| `options.red`   | `number`                                    | false    | `[-255; 255]` | The amount by which to adjust the red channel value             |
+| `options.green` | `number`                                    | false    | `[-255; 255]` | The amount by which to adjust the green channel value           |
+| `options.blue`  | `number`                                    | false    | `[-255; 255]` | The amount by which to adjust the blue channel value            |
+| `options.alpha` | `number`                                    | false    | `[-1; 1]`     | The amount by which to adjust the alpha channel value           |
+
+## Return Value
+
+The `adjustRgb` function returns a new [`Spectrum`](/docs/spectrum-class) instance with the adjusted RGB values.
+
+## Examples
+
+### Adjust all properties
+
+```js
+import Spectrum, { adjustRgb } from '@snipshot/spectrum';
+
+const color = new Spectrum('hsl', [108, 90, 50, 0.5]);
+const adjustedColor = adjustHsl(color, {
+  red: 90,
+  green: -25,
+  blue: 102,
+  alpha: 0.32
+});
+
+console.log(adjustedColor.rgb); // { r: 198, g: 65, b: 152, a: 0.82 }
+```
+
+### Adjust Hue
+
+```js
+import Spectrum, { adjustRgb } from '@snipshot/spectrum';
+
+const color = new Spectrum('rgb', [255, 190, 0, 1]);
+const adjustedColor = adjustRgb(color, { green: -28 });
+
+console.log(adjustedColor.rgb); // { r: 255, g: 162, b: 0, a: 1 }
+```

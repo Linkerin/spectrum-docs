@@ -1,0 +1,337 @@
+---
+title: Spectrum class
+description: API reference for the Spectrum class
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts)
+
+The `Spectrum` class is a fundamental component of the library, representing colors in `HEX`, `HSL`, and `RGB` color spaces.
+Spectrum instances can be used with various methods to convert between color spaces and access individual color channels.
+
+```js
+// Create a Spectrum instance from a hex color value
+const spectrum = new Spectrum('hex', '#FF0000');
+
+spectrum.rgb; // { r: 255, g: 0, b: 0, a: 1 }
+spectrum.hsl; // { h: 0, s: 1, l: 0.5, a: 1 }
+spectrum.hex; // "#ff0000"
+```
+
+## Constructor
+
+```js
+new Spectrum('colorSpace', value);
+```
+
+### Parameters
+
+| Name         | Type                                | Description                                                                    |
+| :----------- | :---------------------------------- | :----------------------------------------------------------------------------- |
+| `colorSpace` | `'hex' \| 'hsl' \| 'rgb'`           | The color space of the input value                                             |
+| `value`      | `string \| Array<string \| number>` | The color value. The format depends on the color space. [See details](#value). |
+
+### Value
+
+The allowed input formats for each color space are as follows:
+
+For `hex`color space:
+
+- The input can be only a string value with optional preceding `#`.
+- It also accepts shorthand HEX notation and alpha channel. [See examples](#with-hex).
+
+For `hsl` and `rgb` color spaces an input can be:
+
+- A string of space-separated or comma-separated values.
+- An array of values in a valid format.
+
+For `hsl`, the format is `[hue, saturation, lightness, opacity]`.
+
+For `rgb`, the format is `[red, green, blue, opacity]`.
+
+#### Valid formats
+
+For `hsl`:
+
+| Value      | Format                                                            | Example         |
+| :--------- | :---------------------------------------------------------------- | :-------------- |
+| hue        | `string \| number` without a unit                                 | `180`, `'180'`  |
+| saturation | Percentage `string` or a decimal point `number` in range `[0; 1]` | `'25%'`, `0.25` |
+| lightness  | Percentage `string` or a decimal point `number` in range `[0; 1]` | `'50%'`, `0.5`  |
+| opacity    | Percentage `string` or a decimal point `number` in range `[0; 1]` | `'90%'`, `0.9`  |
+
+For `rgb`:
+
+| Value   | Format                                                            | Example        |
+| :------ | :---------------------------------------------------------------- | :------------- |
+| red     | `string \| number`                                                | `255`, `'255'` |
+| green   | `string \| number`                                                | `'90'`, `90`   |
+| blue    | `string \| number`                                                | `'30'`, `30`   |
+| opacity | Percentage `string` or a decimal point `number` in range `[0; 1]` | `'90%'`, `0.9` |
+
+### Examples
+
+#### With hex
+
+```js
+new Spectrum('hex', '#AE2127');
+new Spectrum('hex', 'ae2127');
+new Spectrum('hex', '236aa9cc');
+
+new Spectrum('hex', '#eee');
+new Spectrum('hex', 'EEE');
+new Spectrum('hex', '#ea3c');
+```
+
+#### With hsl
+
+```js
+new Spectrum('hsl', '180 0.3 0.9');
+new Spectrum('hsl', '180, 0.3, 0.9');
+new Spectrum('hsl', '180, 0.3, 0.9, 20%');
+new Spectrum('hsl', '180 30% 90% 0.2');
+
+new Spectrum('hsl', [180, 0.3, 0.9]);
+new Spectrum('hsl', [180, 0.3, 0.9, 0.2]);
+new Spectrum('hsl', [180, '30%', '90%', '20%']);
+new Spectrum('hsl', [180, '30%', '90%', 0.2]);
+```
+
+#### With rgb
+
+```js
+new Spectrum('rgb', '255 255 255');
+new Spectrum('rgb', '255, 255, 255');
+new Spectrum('rgb', '255, 255, 255, 20%');
+new Spectrum('rgb', '255 255 255 0.2');
+
+new Spectrum('rgb', [255, 255, 255]);
+new Spectrum('rgb', ['255', '255', '255']);
+new Spectrum('rgb', [255, 255, 255, 0.2]);
+new Spectrum('rgb', ['255', '255', '255', '20%']);
+new Spectrum('rgb', ['255', '255', '255', '0.2']);
+```
+
+## Static class methods
+
+Apart from the constructor, you can also create a new `Spectrum` instance: using the class methods `fromHslObj` and `fromRgbObj`.
+These methods allow you to create a new instance from the objects returned by [`hsl`](#hsl) and [`rgb`](#rgb) instance properties
+or by providing a custom object of your own.
+
+:::caution
+The objects passed to `fromHslObj()` and `fromRgbObj()` methods must be numeric values. Thus, valid value for the saturation property is only `s: 0.7`.
+Setting it as `s: '70%'` will result in an error.
+:::
+
+### fromHslObj()
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L204)
+
+Creates a new instance of the `Spectrum` class using an [HSL object](/docs/types#hslobj) as an input.
+All properties of an HSL object are required.
+
+#### Usage
+
+```ts
+Spectrum.fromHslObj({ h: 8, s: 0.5, l: 0.41, a: 0.9 }: HslObj);
+```
+
+#### Parameters
+
+| Name     | Type                           | Description                                                                                                                |
+| :------- | :----------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
+| `hslObj` | [`HslObj`](/docs/types#hslobj) | An object representing the HSL color values with properties `h` (hue), `s` (saturation), `l` (lightness), and `a` (alpha). |
+
+Returns `Spectrum` instance.
+
+#### Examples
+
+```js
+const color = Spectrum.fromHslObj({ h: 180, s: 0.5, l: 0.75, a: 1 });
+console.log(color.hsl); // { h: 180, s: 0.5, l: 0.75, a: 1 }
+
+const green = new Spectrum('rgb', [0, 255, 0]);
+const greenCopy = Spectrum.fromHslObj(green.hsl);
+```
+
+---
+
+### fromRgbObj()
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L232)
+
+Creates a new instance of the `Spectrum` class using an [RGB object](/docs/types#rgbobj) as an input.
+All properties of an RGB object are required.
+
+#### Usage
+
+```ts
+Spectrum.fromRgbObj({ r: 255, g: 0, b: 0, a: 1 }: RgbObj);
+```
+
+#### Parameters
+
+| Name     | Type                           | Description                                                                                                      |
+| :------- | :----------------------------- | :--------------------------------------------------------------------------------------------------------------- |
+| `rgbObj` | [`RgbObj`](/docs/types#rgbobj) | An object representing the RGB color values with properties `r` (red), `g` (green), `b` (blue), and `a` (alpha). |
+
+Returns `Spectrum` instance.
+
+#### Examples
+
+```js
+const color = Spectrum.fromRgbObj({ r: 255, g: 130, b: 60, a: 0.8 });
+console.log(color.rgb); // { r: 255, g: 130, b: 60, a: 0.8 }
+
+const red = new Spectrum('rgb', [255, 0, 0]);
+const redCopy = Spectrum.fromRgbObj(red.rgb);
+```
+
+## Instance properties
+
+### hex
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L82)
+
+The `hex` property retrieves the hexadecimal representation of the color.
+
+Returns: `string`.
+
+```js
+const color = new Spectrum('hex', '412ED1');
+color.hex; // #412ed1
+```
+
+---
+
+### hsl
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L74)
+
+The `hsl` property retrieves the HSL object of the color.
+
+Returns [`HslObj`](/docs/types#hslobj).
+
+```js
+const color = new Spectrum('hsl', '180 70% 50% 82%');
+color.hsl; // { h: 180, s: 0.7, l: 0.5, a: 0.82 }
+```
+
+---
+
+### rgb
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L64)
+
+The `rgb` property retrieves the RGB object of the color.
+
+Returns [`RgbObj`](/docs/types#rgbobj).
+
+```js
+const color = new Spectrum('rgb', '230 90 115 82%');
+color.rgb; // { r: 230, g: 90, b: 115, a: 0.82 }
+```
+
+---
+
+### alpha
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L90)
+
+The `alpha` property retrieves the alpha channel value of the color.
+
+Returns: `number`.
+
+```js
+const color = new Spectrum('rgb', '230 90 115 82%');
+color.alpha; // 0.82
+```
+
+---
+
+### red
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L98)
+
+The `red` property retrieves the red channel value of the color.
+
+Returns: `number`.
+
+```js
+const color = new Spectrum('rgb', '230 90 115 82%');
+color.red; // 230
+```
+
+---
+
+### green
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L106)
+
+The `green` property retrieves the green channel value of the color.
+
+Returns: `number`.
+
+```js
+const color = new Spectrum('rgb', '230 90 115 82%');
+color.green; // 90
+```
+
+---
+
+### blue
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#114)
+
+The `blue` property retrieves the blue channel value of the color.
+
+Returns: `number`.
+
+```js
+const color = new Spectrum('rgb', '230 90 115 82%');
+color.blue; // 115
+```
+
+---
+
+### hue
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#122)
+
+The `hue` property retrieves the hue value of the color.
+
+Returns: `number`.
+
+```js
+const color = new Spectrum('hsl', '180 70% 50% 82%');
+color.hue; // 180
+```
+
+---
+
+### saturation
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#130)
+
+The `saturation` property retrieves the saturation value of the color.
+
+Returns: `number`.
+
+```js
+const color = new Spectrum('hsl', '180 70% 50% 82%');
+color.saturation; // 0.7
+```
+
+### lightness
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#138)
+
+The `lightness` property retrieves the lightness value of the color.
+
+Returns: `number`.
+
+```js
+const color = new Spectrum('hsl', '180 70% 50% 82%');
+color.lightness; // 0.5
+```

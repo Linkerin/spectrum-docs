@@ -1,0 +1,46 @@
+---
+title: rgbObjToHex()
+description: Convert an RGB object to a hexadecimal color code using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/rgbObjToHex.ts)
+
+The `rgbObjToHex` function allows you to convert an RGB object to its corresponding hexadecimal color code.
+
+## Usage
+
+```js
+import { rgbObjToHex } from '@snipshot/spectrum';
+
+const hex = rgbObjToHex({ r: 255, g: 255, b: 0, a: 1 });
+
+console.log(hex); // #ffff00
+```
+
+## Parameters
+
+`rgbObjToHex(rgbObj)`
+
+| Parameter | Type                           | Required | Description                                                                              |
+| :-------- | :----------------------------- | :------- | :--------------------------------------------------------------------------------------- |
+| `rgbObj`  | [`RgbObj`](/docs/types#rgbobj) | true     | An RGB object that represents a color in the RGBA (Red, Green, Blue, Alpha) color space. |
+
+## Return Value
+
+The `rgbObjToHex` function returns the hexadecimal value of the color as a `string`.
+If the input object's alpha channel value is not equal to 1, the resulting hex code will
+include an additional number representing the alpha channel.
+
+## Examples
+
+### A color with opacity
+
+```js
+import { rgbObjToHex } from '@snipshot/spectrum';
+
+const hex = rgbObjToHex({ r: 138, g: 217, b: 16, a: 0.36 });
+
+console.log(hex); // #8ad9105c
+```

@@ -1,0 +1,46 @@
+---
+title: hslToRgb()
+description: Convert an HSL color value to its corresponding RGB value using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/hslToRgb.ts)
+
+The `hslToRgb` function allows you to convert an HSL color value to its corresponding RGB value.
+
+## Usage
+
+```js
+import { hslToRgb } from '@snipshot/spectrum';
+
+const salmon = hslToRgb({ h: 6, s: 0.93, l: 0.71, a: 1 });
+
+console.log(salmon); // { r: 250, g: 126, b: 112, a: 1 }
+```
+
+## Parameters
+
+`hslToRgb(hslObj)`
+
+| Parameter | Type                           | Required | Description                                                                                        |
+| :-------- | :----------------------------- | :------- | :------------------------------------------------------------------------------------------------- |
+| `hslObj`  | [`HslObj`](/docs/types#hslobj) | true     | An HSL object that represents a color in the HSLA (Hue, Saturation, Lightness, Alpha) color space. |
+
+## Return Value
+
+The `hslToRgb` function returns an [RGB object](/docs/types#rgbobj) of the color value.
+
+## Examples
+
+### With opacity
+
+```js
+import { hexToRgb } from '@snipshot/spectrum';
+
+const teal = hslToRgb({ h: 180, s: 1, l: 0.25, a: 0.75 });
+console.log(teal); // { r: 0, g: 128, b: 128, a: 0.75 }
+
+const violet = hslToRgb({ h: 300, s: 0.76, l: 0.72, a: 0.32 });
+console.log(violet); // { r: 238, g: 129, b: 238, a: 0.32 }
+```

@@ -1,0 +1,72 @@
+---
+title: setHsl()
+description: Modify HSL values of a color using the Spectrum library
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/setHsl.ts)
+
+The `setHsl` function allows you to modify the HSL (Hue, Saturation, Lightness) values of a color object.
+This function returns a new `Spectrum` instance with the updated HSL values.
+
+## Usage
+
+```js
+import Spectrum, { setHsl } from '@snipshot/spectrum';
+
+const color = new Spectrum('hsl', [180, 0.5, 0.32]);
+
+const updatedColor = setHsl(color, {
+  hue: 240, // Set hue equal to 240 degrees
+  lightness: 0.7 // Set lightness equal to 70%
+});
+
+console.log(updatedColor.hsl); // { h: 240, s: 0.5, l: 0.7, a: 1 }
+console.log(color.hex === updatedColor.hex); // false
+```
+
+## Parameters
+
+`setHsl(colorObj, options)`
+
+| Parameter            | Type                                        | Required | Valid range                  | Description                                                     |
+| :------------------- | :------------------------------------------ | :------- | :--------------------------- | :-------------------------------------------------------------- |
+| `colorObj`           | [`Spectrum`](/docs/spectrum-class) instance | true     | -                            | The Spectrum instance representing the color you want to modify |
+| `options.hue`        | `number`                                    | false    | `[0; 360]`                   | The value that will be set as a hue value                       |
+| `options.saturation` | `number \| string`                          | false    | `[0; 1]` or `['0%'; '100%']` | The value that will be set as a saturation value                |
+| `options.lightness`  | `number \| string`                          | false    | `[0; 1]` or `['0%'; '100%']` | The value that will be set as a lightness value                 |
+| `options.alpha`      | `number \| string`                          | false    | `[0; 1]` or `['0%'; '100%']` | The value that will be set as an alpha value                    |
+
+## Return Value
+
+The `setHsl` function returns a new [`Spectrum`](/docs/spectrum-class) instance with the modified HSL values.
+
+## Examples
+
+### Modify all properties
+
+```js
+import Spectrum, { setHsl } from '@snipshot/spectrum';
+
+const color = new Spectrum('hsl', [120, 0.7, 0.5, 1]);
+const updatedColor = setHsl(color, {
+  hue: 210,
+  saturation: 0.35,
+  lightness: 0.92,
+  alpha: 0.9
+});
+
+console.log(updatedColor.hsl); // { h: 210, s: 0.35, l: 0.92, a: 0.9 }
+```
+
+### Modify lightness
+
+```js
+import Spectrum, { setHsl } from '@snipshot/spectrum';
+
+const color = new Spectrum('hsl', [60, 0.32, 0.48, 0.85]);
+const updatedColor = setHsl(color, { lightness: 0.6 });
+
+console.log(updatedColor.hsl); // { h: 60, s: 0.32, l: 0.6, a: 0.85 }
+```
