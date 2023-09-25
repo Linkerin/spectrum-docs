@@ -1,6 +1,9 @@
 ---
 title: Contacts
 description: Get in touch with the Spectrum team
+head:
+  - tag: title
+    content: Contacts · Spectrum
 ---
 
 If you have any questions, feedback, or need assistance with the Spectrum library, we're here to help. Feel free to reach out to us through any of the following channels:

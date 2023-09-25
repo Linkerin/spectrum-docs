@@ -8,10 +8,27 @@ export default defineConfig({
       title: 'Spectrum API Docs',
       description:
         'Spectrum is a lightweight JS / TS library designed to simplify color manipulation and conversion tasks',
-      customCss: ['./src/styles/tokens.css'],
+      customCss: [
+        '@fontsource/montserrat/300.css',
+        '@fontsource/montserrat/400.css',
+        '@fontsource/montserrat/500.css',
+        '@fontsource/montserrat/600.css',
+        '@fontsource/josefin-sans/700.css',
+        './src/styles/tokens.css'
+      ],
       editLink: {
         baseUrl: 'https://github.com/Linkerin/spectrum-docs/edit/main/'
       },
+      head: [
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'icon',
+            href: '/favicon.ico',
+            sizes: '32x32'
+          }
+        }
+      ],
       lastUpdated: true,
       logo: {
         src: './src/assets/spectrum.svg',

@@ -1,6 +1,9 @@
 ---
 title: Getting started
 description: Installation and example usage of Spectrum library
+head:
+  - tag: title
+    content: Getting started · Spectrum
 ---
 
 Spectrum is a lightweight library with no dependencies, making it compatible with any JavaScript environment.
@@ -38,4 +41,4 @@ In this example, we change `hue` and `lightness` values, resulting in a new Spec
 
 For more in-depth information about using Spectrum, explore the [API Documentation section](/docs/spectrum-class).
 
-Thank tou for choosing **Spectrum**! 😉
+Thank you for choosing **Spectrum**! 😉

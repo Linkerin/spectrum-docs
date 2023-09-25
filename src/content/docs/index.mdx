@@ -4,8 +4,8 @@ description: Get started building your docs site with Starlight.
 template: splash
 hero:
   tagline: сonverting colors with ease 🎨
-  # image:
-  #   file: ../../assets/houston.webp
+  image:
+    file: ../../assets/man.svg
   actions:
     - text: Explore the Docs
       link: /docs/about/
@@ -18,17 +18,20 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
+### What can Spectrum do?
+
 <CardGrid>
-  {/* <Card title="Update content" icon="pencil">
-    Edit `src/content/docs/index.mdx` to see this page change.
+  <Card title="Convert color values" icon="pencil">
+    Within HEX, HSL, and RGB color spaces
   </Card>
-  <Card title="Add new content" icon="add-document">
-    Add Markdown or MDX files to `src/content/docs` to create new pages.
+  <Card title="Mix colors" icon="random">
+    Combine two colors with ease
   </Card>
-  <Card title="Configure your site" icon="setting">
-    Edit your `sidebar` and other config in `astro.config.mjs`.
+  <Card title="Generate a color palette" icon="list-format">
+    Create a color palette with varying lightness levels, all derived from a
+    single base color
   </Card>
-  <Card title="Read the docs" icon="open-book">
-    Learn more in [the Starlight Docs](https://starlight.astro.build/).
-  </Card> */}
+  <Card title="Modify colors" icon="setting">
+    Set any color parameter you'd like: lightness, opacity, saturation, and more
+  </Card>
 </CardGrid>

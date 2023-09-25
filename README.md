@@ -1,3 +1,5 @@
+[![Spectrum logo and link to docs website](./src/assets/spectrum.svg)](https://spectrum.snipshot.dev)
+
 # [Spectrum Docs](https://spectrum.snipshot.dev)
 
 [Starlight](https://starlight.astro.build/) powered docs website for the [Spectrum library](https://github.com/Linkerin/spectrum).
