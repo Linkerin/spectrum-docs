@@ -26,6 +26,13 @@ export default defineConfig({
             href: '/favicon.ico',
             sizes: '32x32'
           }
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'sitemap',
+            href: '/sitemap-index.xml'
+          }
         }
       ],
       lastUpdated: true,
