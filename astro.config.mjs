@@ -3,18 +3,17 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://spectrum.snipshot.dev',
   integrations: [
     starlight({
       title: 'Spectrum API Docs',
       description:
         'Spectrum is a lightweight JS / TS library designed to simplify color manipulation and conversion tasks',
       customCss: [
-        '@fontsource/montserrat/300.css',
+        './src/styles/custom.css',
         '@fontsource/montserrat/400.css',
-        '@fontsource/montserrat/500.css',
         '@fontsource/montserrat/600.css',
-        '@fontsource/josefin-sans/700.css',
-        './src/styles/tokens.css'
+        '@fontsource/josefin-sans/700.css'
       ],
       editLink: {
         baseUrl: 'https://github.com/Linkerin/spectrum-docs/edit/main/'
