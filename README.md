@@ -22,7 +22,7 @@ Got interested? [Explore Spectrum's documentation](https://spectrum.snipshot.dev
 ## Contacts
 
 If you have any questions, feedback, or need assistance with the Spectrum library, we’re here to help.
-Feel free to contact at [gusev@snipshot.dev](mailto:gusev@snipshot.dev)
+Feel free to contact at [spectrum@snipshot.dev](mailto:spectrum@snipshot.dev)
 or [open an issue](https://github.com/Linkerin/spectrum/issues) on GitHub.
 
 Thank you for using Spectrum! 🎨

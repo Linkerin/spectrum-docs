@@ -18,7 +18,7 @@ You can find the official Spectrum library repository on GitHub. This is the pla
 
 Have a specific question or need direct assistance? Reach out to us via email, and we'll get back to you as soon as possible.
 
-📧 Email: [gusev@snipshot.dev](mailto:gusev@snipshot.dev)
+📧 Email: [spectrum@snipshot.dev](mailto:spectrum@snipshot.dev)
 
 ## npm Package
 
