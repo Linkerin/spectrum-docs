@@ -59,18 +59,18 @@
 
   margin-top: 2rem;
   text-underline-position: under;
+}
 
-  & p {
-    margin: 0;
-  }
+#custom-footer > p {
+  margin: 0;
+}
 
-  & p:first-of-type {
-    border-right: 1px solid var(--sl-color-gray-5);
-    padding-right: 0.75rem;
-  }
+#custom-footer > p:first-of-type {
+  border-right: 1px solid var(--sl-color-gray-5);
+  padding-right: 0.75rem;
+}
 
-  & svg {
-    display: inline-block;
-    vertical-align: -10.5%;
-  }
+#custom-footer svg {
+  display: inline-block;
+  vertical-align: -10.5%;
 }
