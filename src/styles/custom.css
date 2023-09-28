@@ -64,6 +64,10 @@
   margin: 0;
 }
 
+#custom-footer a {
+  text-wrap: nowrap;
+}
+
 #custom-footer > p:first-of-type {
   border-right: 1px solid var(--sl-color-gray-5);
   padding-right: 0.75rem;

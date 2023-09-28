@@ -60,6 +60,10 @@ export default defineConfig({
             { label: 'adjustRgb()', link: '/docs/adjust-rgb' },
             { label: 'colorMix()', link: '/docs/color-mix' },
             { label: 'createPalette()', link: '/docs/create-palette' },
+            {
+              label: 'getSplitComplementary()',
+              link: '/docs/get-split-complementary'
+            },
             { label: 'hexToRgb()', link: '/docs/hex-to-rgb' },
             { label: 'hslToRgb()', link: '/docs/hsl-to-rgb' },
             { label: 'invert()', link: '/docs/invert' },

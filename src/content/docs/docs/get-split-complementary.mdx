@@ -1,0 +1,49 @@
+---
+title: getSplitComplementary()
+description: Generate split complementary colors using the Spectrum library
+head:
+  - tag: title
+    content: getSplitComplementary() · Spectrum
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/getSplitComplementary.ts)
+
+The `getSplitComplementary` function allows you to generate split complementary colors based on a given `Spectrum` instance.
+If you are not familiar with the term, you may find useful this article:
+"[What Are Split-Complementary Colors? Best Ways to Use This Color Scheme](https://www.color-meanings.com/split-complementary-colors/)".
+
+## Usage
+
+```js
+import Spectrum, { getSplitComplementary } from '@snipshot/spectrum';
+
+const cyan = new Spectrum('hsl', [180, 1, 0.5]);
+
+const { secondary, tertiary } = getSplitComplementary(cyan);
+
+console.log(secondary.hsl); // { h: 330, s: 1, l: 0.5, a: 1 } - rose
+console.log(tertiary.hsl); // { h: 30, s: 1, l: 0.5, a: 1 } - dark orange
+```
+
+## Parameters
+
+`getSplitComplementary(colorObj)`
+
+| Parameter  | Type                                        | Required | Description                                        |
+| :--------- | :------------------------------------------ | :------- | :------------------------------------------------- |
+| `colorObj` | [`Spectrum`](/docs/spectrum-class) instance | true     | The base color for complementary colors generation |
+
+## Return Value
+
+The `colorMix` function returns a an object with two keys: `secondary` and `tertiary`,
+the generated split complementary colors for the given one. The values are instances of
+[`Spectrum`](/docs/spectrum-class) class.
+
+```ts
+type Return = {
+  secondary: Spectrum;
+  tertiary: Spectrum;
+};
+```
