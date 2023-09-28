@@ -1,0 +1,82 @@
+---
+title: onBgColor()
+description: Choose the proper color for the background using the Spectrum library
+head:
+  - tag: title
+    content: onBgColor() · Spectrum
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/onBgColor.ts)
+
+The `onBgColor` helps you choose a proper color considering your background.
+You should provide a `Spectrum` instance of your background color as a first argument,
+and an object with two color options as a second.
+
+:::note
+`dark` property value of the options objects specifies the dark color that may be used
+on the <strong>light</strong> background. Otherwise, `light` property value specifies the light color
+that may be used on the <strong>dark</strong> background.
+:::
+
+## Usage
+
+```js
+import Spectrum, { onBgColor } from '@snipshot/spectrum';
+
+const darkBlueBackground = new Spectrum('hex', '#00008B');
+
+const onDarkBlueBackground = onBgColor(darkBlueBackground, {
+  dark: new Spectrum('hex', '#000'), // black, can be used on light backgrounds
+  light: new Spectrum('hex', '#fff') // white, can be used on light backgrounds
+});
+
+console.log(onDarkBlueBackground.hex); // #ffffff - white
+```
+
+## Parameters
+
+`onBgColor(colorObj, options)`
+
+| Parameter       | Type                                        | Required | Description                                  |
+| :-------------- | :------------------------------------------ | :------- | :------------------------------------------- |
+| `colorObj`      | [`Spectrum`](/docs/spectrum-class) instance | true     | The background color                         |
+| `options.dark`  | `string \| Spectrum`                        | true     | The color to use on the **light** background |
+| `options.light` | `string \| Spectrum`                        | true     | The color to use on the **dark** background  |
+
+## Return Value
+
+`string | Spectrum`
+
+The `onBgColor` one of the values provided inside the `options` object.
+
+## Examples
+
+### Light gray background
+
+```js
+import Spectrum, { onBgColor } from '@snipshot/spectrum';
+
+const lightGrayBg = new Spectrum('rgb', [200, 200, 200]);
+const options = {
+  dark: '#000000',
+  light: '#ffffff'
+};
+
+const onColor = onBgColor(lightGrayBg, options);
+console.log(onColor); // '#000000'
+```
+
+### [Medium slate blue](https://www.w3schools.com/colors/color_tryit.asp?color=MediumSlateBlue) background
+
+```js
+const mediumSlateBlue = new Spectrum('hex', '7B68EE');
+const options = {
+  dark: new Spectrum('hex', '#111'),
+  light: new Spectrum('hex', '#eee')
+};
+
+const onColor = onBgColor(colorObj, options);
+console.log(onColor.hex); // '#eeeeee'
+```

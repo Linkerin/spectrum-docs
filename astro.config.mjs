@@ -67,6 +67,7 @@ export default defineConfig({
             { label: 'hexToRgb()', link: '/docs/hex-to-rgb' },
             { label: 'hslToRgb()', link: '/docs/hsl-to-rgb' },
             { label: 'invert()', link: '/docs/invert' },
+            { label: 'onBgColor()', link: '/docs/on-bg-color' },
             { label: 'rgbObjToHex()', link: '/docs/rgb-obj-to-hex' },
             { label: 'rgbObjToHsl()', link: '/docs/rgb-obj-to-hsl' },
             { label: 'setHsl()', link: '/docs/set-hsl' },
