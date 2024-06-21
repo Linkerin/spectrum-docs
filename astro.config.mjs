@@ -79,6 +79,10 @@ export default defineConfig({
           ]
         },
         {
+          label: 'Demo Tool',
+          link: '/demo/'
+        },
+        {
           label: 'Contacts',
           link: '/contacts/'
         }

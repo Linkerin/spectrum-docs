@@ -50,3 +50,7 @@
 .card {
   border-radius: 1rem;
 }
+
+a {
+  text-underline-position: under;
+}
