@@ -50,31 +50,3 @@
 .card {
   border-radius: 1rem;
 }
-
-#custom-footer {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.75rem;
-  margin-top: 2rem;
-  text-underline-position: under;
-}
-
-#custom-footer > p {
-  margin: 0;
-}
-
-#custom-footer a {
-  text-wrap: nowrap;
-}
-
-#custom-footer > p:first-of-type {
-  border-right: 1px solid var(--sl-color-gray-5);
-  padding-right: 0.75rem;
-}
-
-#custom-footer svg {
-  display: inline-block;
-  margin-left: 0.25ch;
-  vertical-align: -10.5%;
-}

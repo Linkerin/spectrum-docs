@@ -9,6 +9,9 @@ export default defineConfig({
       title: 'Spectrum API Docs',
       description:
         'Spectrum is a lightweight JS / TS library designed to simplify color manipulation and conversion tasks',
+      components: {
+        Footer: './src/components/Footer.astro'
+      },
       customCss: [
         './src/styles/custom.css',
         '@fontsource/montserrat/400.css',
