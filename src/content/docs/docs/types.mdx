@@ -8,11 +8,28 @@ head:
 
 import { Icon } from '@astrojs/starlight/components';
 
+## CssNamedColor
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L19)
+
+A `string` of a
+[CSS named color](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color),
+such as `'red'`, `'blue'`, `'black'` or `'lightseagreen'`.  
+Can be used to initialize a `Spectrum` instance.
+
+### Type Definition
+
+```ts
+type CssNamedColor = "aliceblue" | "antiquewhite" | "aqua" | ... 145 more ... | "yellowgreen"
+```
+
 ## HslObj
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L17)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L25)
 
-An HSL object that represents a color in the [HSLA](https://en.wikipedia.org/wiki/HSL_and_HSV) (Hue, Saturation, Lightness, Alpha) color space.
+An HSL object that represents a color in the
+[HSLA](https://en.wikipedia.org/wiki/HSL_and_HSV) (Hue, Saturation, Lightness,
+Alpha) color space.
 
 | Key | Description                  | Type     | Valid range |
 | :-- | :--------------------------- | :------- | :---------- |
@@ -36,9 +53,11 @@ type HslObj = {
 
 ## RgbObj
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L34)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L42)
 
-An RGB object that represents a color in the [RGBA](https://en.wikipedia.org/wiki/RGBA_color_model) (Red, Green, Blue, Alpha) color space.
+An RGB object that represents a color in the
+[RGBA](https://en.wikipedia.org/wiki/RGBA_color_model) (Red, Green, Blue, Alpha)
+color space.
 
 | Key | Description             | Type     | Valid range |
 | :-- | :---------------------- | :------- | :---------- |

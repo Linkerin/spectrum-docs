@@ -10,8 +10,10 @@ import { Icon } from '@astrojs/starlight/components';
 
 [<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts)
 
-The `Spectrum` class is a fundamental component of the library, representing colors in `HEX`, `HSL`, and `RGB` color spaces.
-Spectrum instances can be used with various methods to convert between color spaces and access individual color channels.
+The `Spectrum` class is a fundamental component of the library, representing
+colors in `HEX`, `HSL`, and `RGB` color spaces. Spectrum instances can be used
+with various methods to convert between color spaces and access individual color
+channels.
 
 ```js
 // Create a Spectrum instance from a hex color value
@@ -30,10 +32,10 @@ new Spectrum('colorSpace', value);
 
 ### Parameters
 
-| Name         | Type                                | Description                                                                    |
-| :----------- | :---------------------------------- | :----------------------------------------------------------------------------- |
-| `colorSpace` | `'hex' \| 'hsl' \| 'rgb'`           | The color space of the input value                                             |
-| `value`      | `string \| Array<string \| number>` | The color value. The format depends on the color space. [See details](#value). |
+| Name         | Type                                                                      | Description                                                                    |
+| :----------- | :------------------------------------------------------------------------ | :----------------------------------------------------------------------------- |
+| `colorSpace` | `'hex' \| 'hsl' \| 'rgb' \|` [`CssNamedColor`](/docs/types#cssnamedcolor) | The color space of the input value                                             |
+| `value`      | `string \| Array<string \| number> \| undefined`                          | The color value. The format depends on the color space. [See details](#value). |
 
 ### Value
 
@@ -42,7 +44,8 @@ The allowed input formats for each color space are as follows:
 For `hex`color space:
 
 - The input can be only a string value with optional preceding `#`.
-- It also accepts shorthand HEX notation and alpha channel. [See examples](#with-hex).
+- It also accepts shorthand HEX notation and alpha channel.
+  [See examples](#with-hex).
 
 For `hsl` and `rgb` color spaces an input can be:
 
@@ -52,6 +55,10 @@ For `hsl` and `rgb` color spaces an input can be:
 For `hsl`, the format is `[hue, saturation, lightness, opacity]`.
 
 For `rgb`, the format is `[red, green, blue, opacity]`.
+
+You can also use a CSS named color as a first parameter. For example, `'red'` or
+`'blue'`. In this case, you should not provide a second parameter.
+[See examples](#with-css-named-color).
 
 #### Valid formats
 
@@ -116,23 +123,32 @@ new Spectrum('rgb', ['255', '255', '255', '20%']);
 new Spectrum('rgb', ['255', '255', '255', '0.2']);
 ```
 
+#### With CSS named color
+
+```js
+new Spectrum('red');
+new Spectrum('blue');
+new Spectrum('lightseagreen');
+```
+
 ## Static class methods
 
-Apart from the constructor, you can also create a new `Spectrum` instance: using the class methods `fromHslObj` and `fromRgbObj`.
-These methods allow you to create a new instance from the objects returned by [`hsl`](#hsl) and [`rgb`](#rgb) instance properties
-or by providing a custom object of your own.
+Apart from the constructor, you can also create a new `Spectrum` instance: using
+the class methods `fromHslObj` and `fromRgbObj`. These methods allow you to
+create a new instance from the objects returned by [`hsl`](#hsl) and
+[`rgb`](#rgb) instance properties or by providing a custom object of your own.
 
-:::caution
-The objects passed to `fromHslObj()` and `fromRgbObj()` methods must be numeric values. Thus, valid value for the saturation property is only `s: 0.7`.
-Setting it as `s: '70%'` will result in an error.
-:::
+:::caution The objects passed to `fromHslObj()` and `fromRgbObj()` methods must
+be numeric values. Thus, valid value for the saturation property is only
+`s: 0.7`. Setting it as `s: '70%'` will result in an error. :::
 
 ### fromHslObj()
 
 [<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L204)
 
-Creates a new instance of the `Spectrum` class using an [HSL object](/docs/types#hslobj) as an input.
-All properties of an HSL object are required.
+Creates a new instance of the `Spectrum` class using an
+[HSL object](/docs/types#hslobj) as an input. All properties of an HSL object
+are required.
 
 #### Usage
 
@@ -164,8 +180,9 @@ const greenCopy = Spectrum.fromHslObj(green.hsl);
 
 [<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L232)
 
-Creates a new instance of the `Spectrum` class using an [RGB object](/docs/types#rgbobj) as an input.
-All properties of an RGB object are required.
+Creates a new instance of the `Spectrum` class using an
+[RGB object](/docs/types#rgbobj) as an input. All properties of an RGB object
+are required.
 
 #### Usage
 
