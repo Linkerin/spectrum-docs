@@ -67,6 +67,7 @@ export default defineConfig({
               label: 'getSplitComplementary()',
               link: '/docs/get-split-complementary'
             },
+            { label: 'getTriadic()', link: '/docs/get-triadic' },
             { label: 'hexToRgb()', link: '/docs/hex-to-rgb' },
             { label: 'hslToRgb()', link: '/docs/hsl-to-rgb' },
             { label: 'invert()', link: '/docs/invert' },
