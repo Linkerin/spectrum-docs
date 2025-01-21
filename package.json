@@ -10,11 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.24.4",
+    "@astrojs/starlight": "^0.31.1",
     "@fontsource/josefin-sans": "^5.0.20",
     "@fontsource/montserrat": "^5.0.18",
     "@particles/spectrum": "npm:@jsr/particles__spectrum@^0.1.9",
-    "astro": "^4.11.0",
+    "astro": "^5.1.8",
     "sharp": "^0.33.4"
   }
 }
