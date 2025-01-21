@@ -1,6 +1,10 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+import montserratNormal from '@fontsource/montserrat/files/montserrat-latin-400-normal.woff2?url';
+import montserratMedium from '@fontsource/montserrat/files/montserrat-latin-600-normal.woff2?url';
+import josefin from '@fontsource/josefin-sans/files/josefin-sans-latin-700-normal.woff2?url';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://spectrum.snipshot.dev',
@@ -35,6 +39,36 @@ export default defineConfig({
           attrs: {
             rel: 'sitemap',
             href: '/sitemap-index.xml'
+          }
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'preload',
+            as: 'font',
+            type: 'font/woff2',
+            href: montserratNormal,
+            crossorigin: 'anonymous'
+          }
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'preload',
+            as: 'font',
+            type: 'font/woff2',
+            href: montserratMedium,
+            crossorigin: 'anonymous'
+          }
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'preload',
+            as: 'font',
+            type: 'font/woff2',
+            href: josefin,
+            crossorigin: 'anonymous'
           }
         }
       ],
