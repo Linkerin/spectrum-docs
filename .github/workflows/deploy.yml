@@ -1,0 +1,53 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-pdf-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install Chromium
+        run: sudo apt-get install -y chromium-browser
+
+      - name: Install, build and run
+        run: |
+          npm install
+          npm run build
+          npm run preview &
+          echo $! > preview.pid
+
+      - name: Wait for server startup
+        run: sleep 5
+        shell: bash
+
+      - name: Create PDF
+        run:
+          npx starlight-to-pdf http://localhost:4321 --browser-executable
+          /usr/bin/chromium-browser -p ./dist/_pdf --filename spectrum-docs
+          --margins '0 0 0 0' --paddings '2cm 1cm 2cm 1.5cm' --header
+          ./src/assets/pdf-header.html --footer ./src/assets/pdf-footer.html
+          --exclude /demo --print-bg --pdf-outline
+
+      - name: Stop preview server
+        run: |
+          kill $(cat preview.pid)
+          rm preview.pid
+
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          npm install -g netlify-cli
+          netlify deploy --auth=$NETLIFY_AUTH_TOKEN --prod --dir=dist --site=$NETLIFY_SITE_ID

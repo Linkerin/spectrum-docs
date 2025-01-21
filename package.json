@@ -1,13 +1,14 @@
 {
   "name": "spectrum-docs",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "pdf": "npm run build && (npm run preview > /dev/null & sleep 5); lsof -ti:4321 > preview.pid; npx starlight-to-pdf http://localhost:4321 -p ./public/_pdf --filename spectrum-docs --margins '0 0 0 0' --paddings '2cm 1cm 2cm 1.5cm' --header ./src/assets/pdf-header.html --footer ./src/assets/pdf-footer.html --exclude /demo --print-bg --pdf-outline; kill $(cat preview.pid) && rm preview.pid && echo 'PDF script finished'"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.31.1",

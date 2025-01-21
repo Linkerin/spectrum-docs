@@ -33,6 +33,16 @@ const isHomepage = Astro.props.slug === '';
           <Icon name="external" />
         </a>
       </p>
+      <p>
+        Get
+        <a
+          href="/_pdf/spectrum-docs.pdf"
+          aria-label="To open Spectrum docs PDF file in a new tab"
+          target="_blank"
+        >
+          PDF version
+        </a>
+      </p>
     </div>
   ) : (
     <Default {...Astro.props}>
@@ -45,7 +55,7 @@ const isHomepage = Astro.props.slug === '';
   #custom-footer {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    flex-wrap: wrap;
     font-size: 0.75rem;
 
     & a {
@@ -67,9 +77,10 @@ const isHomepage = Astro.props.slug === '';
       margin: 0;
     }
 
-    & > p:first-of-type {
+    & > p:not(:last-of-type) {
       border-right: 1px solid var(--sl-color-gray-5);
-      padding-right: 0.75rem;
+      padding-inline-end: 0.75rem;
+      margin-inline-end: 0.75rem;
     }
 
     & svg {
