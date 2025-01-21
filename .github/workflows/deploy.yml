@@ -24,12 +24,14 @@ jobs:
         run: |
           npm install
           npm run build
-          npm run preview &
-          echo $! > preview.pid
+          npm run preview
 
       - name: Wait for server startup
         run: sleep 5
         shell: bash
+
+      - name: Record preview server's process ID
+        run: lsof -ti:4321 > preview.pid
 
       - name: Create PDF
         run:
@@ -37,7 +39,7 @@ jobs:
           /usr/bin/chromium-browser -p ./dist/_pdf --filename spectrum-docs
           --margins '0 0 0 0' --paddings '2cm 1cm 2cm 1.5cm' --header
           ./src/assets/pdf-header.html --footer ./src/assets/pdf-footer.html
-          --exclude /demo --print-bg --pdf-outline
+          --exclude /demo --no-starlight-print-css --print-bg --pdf-outline
 
       - name: Stop preview server
         run: |
