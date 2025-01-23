@@ -2,7 +2,7 @@
 :root {
   --github-icon-color: hsl(218 17% 35%);
 
-  --sl-font: 'Montserrat', sans-serif;
+  --sl-font: 'Montserrat Variable', sans-serif;
 
   --sl-color-accent-low: hsl(10, 52%, 20%);
   --sl-color-accent: hsl(10, 52%, 40%);
@@ -28,7 +28,7 @@
 }
 
 #_top {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Josefin Sans Variable', sans-serif;
   font-weight: 700;
 
   background: rgb(174, 33, 39);
