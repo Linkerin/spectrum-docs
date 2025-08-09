@@ -83,8 +83,10 @@ For `hwb`:
 | blackness | Percentage `string` or a decimal point `number` in range `[0; 1]` | `'50%'`, `0.5`  |
 | opacity   | Percentage `string` or a decimal point `number` in range `[0; 1]` | `'90%'`, `0.9`  |
 
-:::note If the sum of `whiteness` and `blackness` is 100% or greater, the color
-is normalized to a shade of gray, and a warning is displayed in the console. :::
+:::note
+If the sum of `whiteness` and `blackness` is 100% or greater, the color
+is normalized to a shade of gray, and a warning is displayed in the console.
+:::
 
 For `rgb`:
 
@@ -168,14 +170,16 @@ the class methods [`fromHslObj`](#fromhslobj), [`fromHwbObj`](#fromhwbobj), and
 from the objects returned by [`hsl`](#hsl), [`hwb`](#hwb), and [`rgb`](#rgb)
 instance properties or by providing a custom object of your own.
 
-:::caution The objects passed to `fromHslObj()`, `fromHwbObj()`, and
+:::caution
+The objects passed to `fromHslObj()`, `fromHwbObj()`, and
 `fromRgbObj()` methods must be numeric values. Thus, valid value for the
 saturation property is only `s: 0.7`. Setting it as `s: '70%'` will result in an
-error. :::
+error.
+:::
 
 ### fromHslObj()
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L298)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L339)
 
 Creates a new instance of the `Spectrum` class using an
 [HSL object](/docs/types#hslobj) as an input. All properties of an HSL object
@@ -209,7 +213,7 @@ const greenCopy = Spectrum.fromHslObj(green.hsl);
 
 ### fromHwbObj()
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L353)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L394)
 
 Creates a new instance of the `Spectrum` class using an
 [HWB object](/docs/types#hwbobj) as an input. All properties of an HWB object
@@ -243,7 +247,7 @@ const greenCopy = Spectrum.fromHwbObj(green.hwb);
 
 ### fromRgbObj()
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L326)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L367)
 
 Creates a new instance of the `Spectrum` class using an
 [RGB object](/docs/types#rgbobj) as an input. All properties of an RGB object
@@ -277,7 +281,7 @@ const redCopy = Spectrum.fromRgbObj(red.rgb);
 
 ### hex
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L133)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L134)
 
 The `hex` property retrieves the hexadecimal representation of the color.
 
@@ -292,7 +296,7 @@ color.hex; // #412ed1
 
 ### hsl
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L117)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L118)
 
 The `hsl` property retrieves the HSL object of the color.
 
@@ -307,7 +311,7 @@ color.hsl; // { h: 180, s: 0.7, l: 0.5, a: 0.82 }
 
 ### hwb
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L125)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L126)
 
 The `hwb` property retrieves the HWB object of the color.
 
@@ -322,7 +326,7 @@ color.hwb; // { h: 180, s: 0.25, l: 0.3, a: 0.82 }
 
 ### rgb
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L107)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L108)
 
 The `rgb` property retrieves the RGB object of the color.
 
@@ -337,7 +341,7 @@ color.rgb; // { r: 230, g: 90, b: 115, a: 0.82 }
 
 ### alpha
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L141)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L142)
 
 The `alpha` property retrieves the alpha channel value of the color.
 
@@ -352,7 +356,7 @@ color.alpha; // 0.82
 
 ### red
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L149)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L150)
 
 The `red` property retrieves the red channel value of the color.
 
@@ -367,7 +371,7 @@ color.red; // 230
 
 ### green
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L157)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L158)
 
 The `green` property retrieves the green channel value of the color.
 
@@ -382,7 +386,7 @@ color.green; // 90
 
 ### blue
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L165)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L166)
 
 The `blue` property retrieves the blue channel value of the color.
 
@@ -397,7 +401,7 @@ color.blue; // 115
 
 ### hue
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L173)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L174)
 
 The `hue` property retrieves the hue value of the color.
 
@@ -412,7 +416,7 @@ color.hue; // 180
 
 ### saturation
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L181)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L182)
 
 The `saturation` property retrieves the saturation value of the color.
 
@@ -425,7 +429,7 @@ color.saturation; // 0.7
 
 ### lightness
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L189)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L190)
 
 The `lightness` property retrieves the lightness value of the color.
 
@@ -438,7 +442,7 @@ color.lightness; // 0.5
 
 ### whiteness
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L197)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L198)
 
 The `whiteness` property retrieves the whiteness value of the color.
 
@@ -451,13 +455,64 @@ color.whiteness; // 0.25
 
 ### blackness
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L205)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L206)
 
 The `blackness` property retrieves the blackness value of the color.
 
-Returns: `blackness`.
+Returns: `number`.
 
 ```js
 const color = new Spectrum('hwb', '180 25% 30% 82%');
 color.blackness; // 0.3
+```
+
+## Instance methods
+
+### toHslString()
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L218)
+
+Returns a string formatted as a CSS
+[`hsl()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl)
+color function.
+
+Returns: `string`.
+
+```js
+const spectrum = new Spectrum('hsl', [180, 0.5, 0.85, 0.4]);
+spectrum.toHslString(); // hsl(180 50% 85% / 0.4)
+```
+
+---
+
+### toHwbString()
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L232)
+
+Returns a string formatted as a CSS
+[`hwb()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb)
+color function.
+
+Returns: `string`.
+
+```js
+const spectrum = new Spectrum('hwb', [180, 0.32, 0.5, 0.4]);
+spectrum.toHwbString(); // hwb(180 32% 50% / 0.4)
+```
+
+---
+
+### toRgbString()
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.ts#L246)
+
+Returns a string formatted as a CSS
+[`rgb()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb)
+color function.
+
+Returns: `string`.
+
+```js
+const spectrum = new Spectrum('rgb', [255, 130, 60, 0.4]);
+spectrum.toRgbString(); // rgb(255 130 60 / 0.4)
 ```
