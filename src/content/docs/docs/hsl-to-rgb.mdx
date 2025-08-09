@@ -1,6 +1,8 @@
 ---
 title: hslToRgb()
-description: Convert an HSL color value to its corresponding RGB value using the Spectrum library
+description:
+  Convert an HSL color value to its corresponding RGB value using the Spectrum
+  library
 head:
   - tag: title
     content: hslToRgb() · Spectrum
@@ -10,7 +12,8 @@ import { Icon } from '@astrojs/starlight/components';
 
 [<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/hslToRgb.ts)
 
-The `hslToRgb` function allows you to convert an HSL color value to its corresponding RGB value.
+The `hslToRgb` function allows you to convert an HSL color value to its
+corresponding RGB value.
 
 ## Usage
 
@@ -32,14 +35,15 @@ console.log(salmon); // { r: 250, g: 126, b: 112, a: 1 }
 
 ## Return Value
 
-The `hslToRgb` function returns an [RGB object](/docs/types#rgbobj) of the color value.
+The `hslToRgb` function returns an [RGB object](/docs/types#rgbobj) of the color
+value.
 
 ## Examples
 
 ### With opacity
 
 ```js
-import { hexToRgb } from '@snipshot/spectrum';
+import { hslToRgb } from '@snipshot/spectrum';
 
 const teal = hslToRgb({ h: 180, s: 1, l: 0.25, a: 0.75 });
 console.log(teal); // { r: 0, g: 128, b: 128, a: 0.75 }

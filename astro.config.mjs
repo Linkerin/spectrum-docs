@@ -55,6 +55,7 @@ export default defineConfig({
           items: [
             { label: 'Spectrum class', link: '/docs/spectrum-class/' },
             { label: 'adjustHsl()', link: '/docs/adjust-hsl' },
+            { label: 'adjustHwb()', link: '/docs/adjust-hwb' },
             { label: 'adjustRgb()', link: '/docs/adjust-rgb' },
             { label: 'colorMix()', link: '/docs/color-mix' },
             { label: 'createPalette()', link: '/docs/create-palette' },
@@ -64,12 +65,15 @@ export default defineConfig({
             },
             { label: 'getTriadic()', link: '/docs/get-triadic' },
             { label: 'hexToRgb()', link: '/docs/hex-to-rgb' },
+            { label: 'hslToHwb()', link: '/docs/hsl-to-hwb' },
             { label: 'hslToRgb()', link: '/docs/hsl-to-rgb' },
+            { label: 'hwbToHsl()', link: '/docs/hwb-to-hsl' },
             { label: 'invert()', link: '/docs/invert' },
             { label: 'onBgColor()', link: '/docs/on-bg-color' },
             { label: 'rgbObjToHex()', link: '/docs/rgb-obj-to-hex' },
             { label: 'rgbObjToHsl()', link: '/docs/rgb-obj-to-hsl' },
             { label: 'setHsl()', link: '/docs/set-hsl' },
+            { label: 'setHwb()', link: '/docs/set-hwb' },
             { label: 'setRgb()', link: '/docs/set-rgb' },
             { label: 'Types', link: '/docs/types' }
           ]

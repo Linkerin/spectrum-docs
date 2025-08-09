@@ -8,9 +8,21 @@ head:
 
 import { Icon } from '@astrojs/starlight/components';
 
+## ColorSpace
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L13)
+
+Color spaces supported by `Spectrum` constructor.
+
+### Type Definition
+
+```ts
+export type ColorSpace = 'hex' | 'hsl' | 'hwb' | 'rgb';
+```
+
 ## CssNamedColor
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L19)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L17)
 
 A `string` of a
 [CSS named color](https://developer.mozilla.org/en-US/docs/Web/CSS/named-color),
@@ -25,7 +37,7 @@ type CssNamedColor = "aliceblue" | "antiquewhite" | "aqua" | ... 145 more ... | 
 
 ## HslObj
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L25)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L23)
 
 An HSL object that represents a color in the
 [HSLA](https://en.wikipedia.org/wiki/HSL_and_HSV) (Hue, Saturation, Lightness,
@@ -51,9 +63,37 @@ type HslObj = {
 
 ---
 
+## HwbObj
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L34)
+
+An HWB object that represents a color in the
+[HWB](https://en.wikipedia.org/wiki/HWB_color_model) (Hue, Whiteness, Blackness,
+Alpha) color model.
+
+| Key | Description             | Type     | Valid range |
+| :-- | :---------------------- | :------- | :---------- |
+| `h` | Hue (color tone)        | `number` | `[0; 360]`  |
+| `w` | Whiteness               | `number` | `[0; 1]`    |
+| `b` | Blackness               | `number` | `[0; 1]`    |
+| `a` | Alpha channel (opacity) | `number` | `[0; 1]`    |
+
+### Type Definition
+
+```ts
+type HwbObj = {
+  h: number;
+  w: number;
+  b: number;
+  a: number;
+};
+```
+
+---
+
 ## RgbObj
 
-[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L42)
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/spectrum.types.ts#L50)
 
 An RGB object that represents a color in the
 [RGBA](https://en.wikipedia.org/wiki/RGBA_color_model) (Red, Green, Blue, Alpha)

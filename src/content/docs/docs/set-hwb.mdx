@@ -1,0 +1,77 @@
+---
+title: setHwb()
+description: Modify HWB values of a color using the Spectrum library
+head:
+  - tag: title
+    content: setHwb() · Spectrum
+---
+
+import { Icon } from '@astrojs/starlight/components';
+
+[<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/setHwb.ts)
+
+The `setHwb` function allows you to modify the HWB (Hue, Whiteness, Blackness)
+values of a color object. This function returns a new `Spectrum` instance with
+the updated HWB values.
+
+## Usage
+
+```js
+import Spectrum, { setHwb } from '@snipshot/spectrum';
+
+const color = new Spectrum('hwb', [200, 0.3, 0.25, 1]);
+
+const updatedColor = setHwb(color, {
+  hue: 240, // Set hue equal to 240 degrees
+  blackness: 0.47 // Set blackness equal to 47%
+});
+
+console.log(updatedColor.hwb); // { h: 240, w: 0.3, b: 0.47, a: 1 }
+console.log(color.hex === updatedColor.hex); // false
+```
+
+## Parameters
+
+`setHwb(colorObj, options)`
+
+| Parameter           | Type                                        | Required | Valid range                  | Description                                                     |
+| :------------------ | :------------------------------------------ | :------- | :--------------------------- | :-------------------------------------------------------------- |
+| `colorObj`          | [`Spectrum`](/docs/spectrum-class) instance | true     | -                            | The Spectrum instance representing the color you want to modify |
+| `options.hue`       | `number`                                    | false    | `[0; 360]`                   | The value that will be set as a hue value                       |
+| `options.whiteness` | `number \| string`                          | false    | `[0; 1]` or `['0%'; '100%']` | The value that will be set as a whiteness value                 |
+| `options.blackness` | `number \| string`                          | false    | `[0; 1]` or `['0%'; '100%']` | The value that will be set as a blackness value                 |
+| `options.alpha`     | `number \| string`                          | false    | `[0; 1]` or `['0%'; '100%']` | The value that will be set as an alpha value                    |
+
+## Return Value
+
+The `setHwb` function returns a new [`Spectrum`](/docs/spectrum-class) instance
+with the modified HWB values.
+
+## Examples
+
+### Modify all properties
+
+```js
+import Spectrum, { setHwb } from '@snipshot/spectrum';
+
+const color = new Spectrum('hwb', [120, 0.25, 0.45, 1]);
+const updatedColor = setHwb(color, {
+  hue: 210,
+  whiteness: 0.35,
+  blackness: 0.1,
+  alpha: 0.9
+});
+
+console.log(updatedColor.hwb); // { h: 210, w: 0.35, b: 0.1, a: 0.9 }
+```
+
+### Modify whiteness
+
+```js
+import Spectrum, { setHwb } from '@snipshot/spectrum';
+
+const color = new Spectrum('hwb', [60, 0.32, 0.48, 0.85]);
+const updatedColor = setHwb(color, { whiteness: 0.5 });
+
+console.log(updatedColor.hwb); // { h: 60, w: 0.5, b: 0.48, a: 0.85 }
+```

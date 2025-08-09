@@ -10,8 +10,9 @@ import { Icon } from '@astrojs/starlight/components';
 
 [<Icon name="github" size='1.5rem' color="var(--github-icon-color)" />](https://github.com/Linkerin/spectrum/blob/main/src/methods/adjustHsl.ts)
 
-The `adjustHsl` function allows you to adjust the HSL (Hue, Saturation, Lightness) values of a color object.
-This function returns a new `Spectrum` instance with the updated HSL values.
+The `adjustHsl` function allows you to adjust the HSL (Hue, Saturation,
+Lightness) values of a color object. This function returns a new `Spectrum`
+instance with the updated HSL values.
 
 ## Usage
 
@@ -22,8 +23,8 @@ const color = new Spectrum('hsl', [200, 0.5, 0.6, 1]);
 
 const adjustedColor = adjustHsl(color, {
   hue: -20, // Adjust hue by -20 degrees
-  saturation: 0.1, // Increase saturation by 10%
-  lightness: -0.05 // Decrease lightness by 5%
+  saturation: '10%', // Increase saturation by 10%
+  lightness: '-5%' // Decrease lightness by 5%
 });
 
 console.log(adjustedColor.hsl); // { h: 180, s: 0.6, l: 0.55, a: 1 }
@@ -44,7 +45,8 @@ console.log(color.hex === adjustedColor.hex); // false
 
 ## Return Value
 
-The `adjustHsl` function returns a new [`Spectrum`](/docs/spectrum-class) instance with the adjusted HSL values.
+The `adjustHsl` function returns a new [`Spectrum`](/docs/spectrum-class)
+instance with the adjusted HSL values.
 
 ## Examples
 
@@ -56,8 +58,8 @@ import Spectrum, { adjustHsl } from '@snipshot/spectrum';
 const color = new Spectrum('hsl', [200, 0.5, 0.6, 1]);
 const adjustedColor = adjustHsl(color, {
   hue: -45,
-  saturation: 0.3,
-  lightness: -0.14,
+  saturation: '-30%',
+  lightness: '-14%',
   alpha: -0.32
 });
 
